@@ -1,4 +1,4 @@
 YouTube View Bot V1.0
 =======================
 
-A free YouTube Bot coded entirely in Python 2.7.
+A YouTube Bot coded in Python 2.7.
