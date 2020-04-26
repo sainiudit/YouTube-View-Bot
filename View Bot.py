@@ -4,13 +4,14 @@ import wx
 from selenium import webdriver
 import itertools
 import time
+from urllib.request import Request,urlopen
 
 
-proxies = open("C:\Users\Name\Documents\YouTube\Bots\proxies.txt")
-
+lst = urlopen(Request('https://www.proxy-list.download/api/v1/get?type=https&anon=elite',headers={'User-Agent':'DeBos/ytviewer'})).read().decode().strip().split('\r\n')
+proxies=enumerate(lst)
 fp = webdriver.FirefoxProfile()
-fp.set_preference('network.proxy.ssl', next(proxies))
-fp.set_preference('network.proxy.http', next(proxies))
+fp.set_preference('network.proxy.ssl', next(proxies)[1])
+fp.set_preference('network.proxy.http', next(proxies)[1])
 fp.set_preference('network.proxy.type', 1)
 
 class App(wx.App):
